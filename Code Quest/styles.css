@@ -16,7 +16,9 @@ body {
 .container {
     width: 80%;
     margin: auto;
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
 }
 
 header,
@@ -28,6 +30,9 @@ footer {
 
 header nav ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 header nav ul li {
@@ -72,4 +77,14 @@ main {
 footer p {
     text-align: center;
     padding-top: 20px;
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: center; /* Center items vertically */
+    }
+
+    nav ul {
+        margin-top: 20px; /* Add space between logo and nav on small screens */
+    }
 }
