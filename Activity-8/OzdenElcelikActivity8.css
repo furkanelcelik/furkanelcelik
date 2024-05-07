@@ -1,0 +1,13 @@
+.textLabel{
+    display: inline-block;
+    width: 200px; /* Fixed width for labels */
+}
+.submit{
+    margin-left: 20px;
+}
+.textAbout{
+    position: absolute;
+
+    display: inline-block;
+    width: 100px; /* Fixed width for labels */
+}
