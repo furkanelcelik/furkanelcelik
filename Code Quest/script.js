@@ -1,29 +1,29 @@
 $(document).ready(function() {
-    // Add custom validation method for the "about" textarea
+    // Feedback form validation
     $.validator.addMethod("aboutValidation", function(value, element) {
-        return value.trim().length >= 10; // Minimum 10 characters required
+        return value.trim().length >= 10;
     }, "<br><h1 class='errors'>Please enter at least 10 characters.</h1>");
 
-    // Validate the form
     $("#rating").rateYo({
         starWidth: "40px",
         fullStar: true
     });
+
     $("#feedbackForm").validate({
         rules: {
             name: {
                 required: true,
-                minlength: 2 // Minimum length of 2 characters
+                minlength: 2
             },
             email: {
                 required: true,
-                email: true // Validate email format
+                email: true
             },
-            sex:{
-                required:true
-            }, // Gender selection required
+            sex: {
+                required: true
+            },
             about: {
-                aboutValidation: true // Custom validation rule for "about" textarea
+                aboutValidation: true
             }
         },
         messages: {
@@ -35,9 +35,8 @@ $(document).ready(function() {
                 required: "<h2 class='errors'>Please enter your email address.</h2>",
                 email: "<h2 class='errors'>Please enter a valid email address.</h2>"
             },
-            sex:{
+            sex: {
                 required: "<h2 class='errors'>Please select your gender.</h2>"
-
             },
             about: {
                 aboutValidation: "<h2 class='errors'>Please enter at least 10 characters.</h2>"
@@ -45,19 +44,46 @@ $(document).ready(function() {
         },
         errorPlacement: function(error, element) {
             if (element.attr("name") == "sex") {
-                // Eğer hata cinsiyet alanı ile ilgiliyse, sonraki kardeş elementin sonuna yerleştir
                 error.insertAfter('#gender');
             } else {
-                // Diğer hatalar için varsayılan yerleştirme işlemi
                 error.insertAfter(element);
             }
         },
         submitHandler: function(form) {
-            // Form submission logic here (e.g., AJAX)
-            // Show thank you modal on successful form submission
             $("#thankYouModal").modal();
-            // Clear form
             form.reset();
+        }
+    });
+
+    // AJAX request to an external file (feedback.json)
+    $.ajax({
+        url: 'data/feedback.json',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            var feedbackList = $('#feedback-list');
+            data.forEach(function(feedback) {
+                feedbackList.append('<li>' + feedback.name + ': ' + feedback.comment + '</li>');
+            });
+        },
+        error: function() {
+            alert('Failed to load feedback.');
+        }
+    });
+
+    // AJAX request to another website (example: JSONPlaceholder)
+    $.ajax({
+        url: 'https://jsonplaceholder.typicode.com/posts',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            var feedbackList = $('#feedback-list');
+            for (var i = 0; i < 5; i++) { // Displaying only the first 5 posts
+                feedbackList.append('<li>' + data[i].title + '</li>');
+            }
+        },
+        error: function() {
+            alert('Failed to load external data.');
         }
     });
 });
