@@ -55,35 +55,45 @@ $(document).ready(function() {
         }
     });
 
+    // To prevent multiple AJAX calls, use a flag
+    var isFeedbackLoaded = false;
+    var isExternalDataLoaded = false;
+    console.log(isFeedbackLoaded);
     // AJAX request to an external file (feedback.json)
-    $.ajax({
-        url: 'data/feedback.json',
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            var feedbackList = $('#feedback-list');
-            data.forEach(function(feedback) {
-                feedbackList.append('<li>' + feedback.name + ': ' + feedback.comment + '</li>');
-            });
-        },
-        error: function() {
-            alert('Failed to load feedback.');
-        }
-    });
+    if (!isFeedbackLoaded) {
+        $.ajax({
+            url: 'data/feedback.json',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var feedbackList = $('#feedback-list');
+                data.forEach(function(feedback) {
+                    feedbackList.append('<li>' + feedback.name + ': ' + feedback.comment + '</li>');
+                });
+                isFeedbackLoaded = true;
+            },
+            error: function() {
+                alert('Failed to load feedback.');
+            }
+        });
+    }
 
     // AJAX request to another website (example: JSONPlaceholder)
-    $.ajax({
-        url: 'https://jsonplaceholder.typicode.com/posts',
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            var feedbackList = $('#feedback-list');
-            for (var i = 0; i < 5; i++) { // Displaying only the first 5 posts
-                feedbackList.append('<li>' + data[i].title + '</li>');
+    if (!isExternalDataLoaded) {
+        $.ajax({    
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var feedbackList = $('#feedback-list');
+                for (var i = 0; i < 5; i++) { // Displaying only the first 5 posts
+                    feedbackList.append('<li>' + data[i].title + '</li>');
+                }
+                isExternalDataLoaded = true;
+            },
+            error: function() {
+                alert('Failed to load external data.');
             }
-        },
-        error: function() {
-            alert('Failed to load external data.');
-        }
-    });
+        });
+    }
 });
