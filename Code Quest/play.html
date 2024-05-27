@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play- CodeQuest</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="play.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -28,11 +30,19 @@
         <section class="play">
             <h2>Our Games</h2>
             <p>Explore our diverse range of games designed to help you learn coding fundamentals and beyond.</p>
-            
+            <div id="quiz-container">
+                <!-- Sorular buraya yüklenecek -->
+            </div>
+            <div id="results">
+                <p>Doğru Sayısı: <span id="correct-count">0</span></p>
+                <p>Yanlış Sayısı: <span id="wrong-count">0</span></p>
+            </div>
+            <button id="show-results-button">Sonuçları Göster</button>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 CodeQuest. All rights reserved &copy;.</p>
     </footer>
+    <script src="play.js" defer></script>
 </body>
 </html>

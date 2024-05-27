@@ -1,0 +1,67 @@
+[
+      {
+        "question": "What does HTML stand for?",
+        "options": ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyperlinking Text Mark Language"],
+        "correctAnswer": "Hyper Text Markup Language"
+    },
+    {
+        "question": "Which language is used for web apps?",
+        "options": ["PHP", "Python", "JavaScript", "All"],
+        "correctAnswer": "All"
+    },
+    {
+        "question": "Inside which HTML element do we put the JavaScript?",
+        "options": ["<js>", "<scripting>", "<script>", "<javascript>"],
+        "correctAnswer": "<script>"
+    },
+    {
+        "question": "What does CSS stand for?",
+        "options": ["Creative Style Sheets", "Colorful Style Sheets", "Cascading Style Sheets", "Computer Style Sheets"],
+        "correctAnswer": "Cascading Style Sheets"
+    },
+    {
+        "question": "How do you write 'Hello World' in an alert box?",
+        "options": ["msgBox('Hello World');", "alertBox('Hello World');", "msg('Hello World');", "alert('Hello World');"],
+        "correctAnswer": "alert('Hello World');"
+    },
+    {
+        "question": "How do you create a function in JavaScript?",
+        "options": ["function:myFunction()", "function myFunction()", "function = myFunction()", "function => myFunction()"],
+        "correctAnswer": "function myFunction()"
+    },
+    {
+        "question": "How do you call a function named 'myFunction'?",
+        "options": ["call function myFunction()", "call myFunction()", "myFunction()", "Call.myFunction()"],
+        "correctAnswer": "myFunction()"
+    },
+    {
+        "question": "How to write an IF statement in JavaScript?",
+        "options": ["if i == 5 then", "if i = 5 then", "if (i == 5)", "if i == 5"],
+        "correctAnswer": "if (i == 5)"
+    },
+    {
+        "question": "How does a WHILE loop start?",
+        "options": ["while i = 1 to 10", "while (i <= 10; i++)", "while (i <= 10)", "while (i++ <= 10)"],
+        "correctAnswer": "while (i <= 10)"
+    },
+    {
+        "question": "How can you add a comment in JavaScript?",
+        "options": ["'This is a comment", "// This is a comment", "<!-- This is a comment -->", "-- This is a comment"],
+        "correctAnswer": "// This is a comment"
+    },
+    {
+        "question": "Which event occurs when the user clicks on an HTML element?",
+        "options": ["onchange", "onclick", "onmouseclick", "onmouseover"],
+        "correctAnswer": "onclick"
+    },
+    {
+        "question": "What is the correct way to write a JavaScript array?",
+        "options": ["var colors = (1:'red', 2:'green', 3:'blue')", "var colors = ['red', 'green', 'blue']", "var colors = 'red', 'green', 'blue'", "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')"],
+        "correctAnswer": "var colors = ['red', 'green', 'blue']"
+    },
+    {
+        "question": "How do you round the number 7.25 to the nearest integer?",
+        "options": ["rnd(7.25)", "Math.rnd(7.25)", "Math.round(7.25)", "round(7.25)"],
+        "correctAnswer": "Math.round(7.25)"
+    }
+]

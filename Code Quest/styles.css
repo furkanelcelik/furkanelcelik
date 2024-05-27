@@ -65,15 +65,19 @@ main {
     text-align: center;
     padding: 100px 0;
 }
-.latest-feedback {
+#joke-container {
     text-align: center;
     padding: 100px 0;
+    margin-bottom: 400px;
 }
 .about {
     text-align: center;
     padding: 50px 0;
 }
-
+.play {
+    text-align: center;
+    padding: 50px 0;
+}
 .about img {
     width: 250px;
     height: auto;
@@ -127,4 +131,15 @@ footer p {
 }
 .errors{
     display: block;
+}
+
+#joke-container {
+    max-width: 600px;
+    margin: 20px auto 100px auto;
+    text-align: center;
+    font-size: 18px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }

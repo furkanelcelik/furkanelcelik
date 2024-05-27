@@ -55,45 +55,22 @@ $(document).ready(function() {
         }
     });
 
-    // To prevent multiple AJAX calls, use a flag
-    var isFeedbackLoaded = false;
-    var isExternalDataLoaded = false;
-    console.log(isFeedbackLoaded);
-    // AJAX request to an external file (feedback.json)
-    if (!isFeedbackLoaded) {
-        $.ajax({
-            url: 'data/feedback.json',
-            method: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                var feedbackList = $('#feedback-list');
-                data.forEach(function(feedback) {
-                    feedbackList.append('<li>' + feedback.name + ': ' + feedback.comment + '</li>');
-                });
-                isFeedbackLoaded = true;
-            },
-            error: function() {
-                alert('Failed to load feedback.');
-            }
-        });
-    }
 
-    // AJAX request to another website (example: JSONPlaceholder)
-    if (!isExternalDataLoaded) {
-        $.ajax({    
-            url: 'https://jsonplaceholder.typicode.com/posts',
+    function getJoke() {
+        $.ajax({
+            url: 'https://official-joke-api.appspot.com/jokes/programming/random',
             method: 'GET',
             dataType: 'json',
             success: function(data) {
-                var feedbackList = $('#feedback-list');
-                for (var i = 0; i < 5; i++) { // Displaying only the first 5 posts
-                    feedbackList.append('<li>' + data[i].title + '</li>');
-                }
-                isExternalDataLoaded = true;
+                var joke = data[0];
+                var jokeHtml = '<p>' + joke.setup + '</p>';
+                jokeHtml += '<p><strong>' + joke.punchline + '</strong></p>';
+                $('#joke-container').html(jokeHtml);
             },
             error: function() {
-                alert('Failed to load external data.');
+                $('#joke-container').html('<p>Şaka yüklenemedi.</p>');
             }
         });
     }
+    getJoke();
 });
